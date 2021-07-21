@@ -17,6 +17,9 @@ class Bot(commands.Bot):
         if isinstance(exception, commands.CommandNotFound):
             return
         
+        if isinstance(exception, commands.BadArgument):
+            return await ctx.send("올바른 값을 입력해주세요.")
+
         return await ctx.send(f"Error: {exception}")
 
     
