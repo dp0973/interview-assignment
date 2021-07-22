@@ -17,7 +17,12 @@ class Answer(commands.Cog):
             return await ctx.send('올바른 값을 입력해주세요.')
 
         def add_submitted(i, submitted):
-            embed.add_field(name=f'**{i+1}. {submitted.id}**', value=f'{datetime.fromtimestamp(submitted.date)}\n[초대 링크](https://discord.com/oauth2/authorize?client_id={submitted.id}&scope=bot&guild_id=653083797763522580)', inline=False)
+            url = f'https://discord.com/oauth2/authorize?client_id={submitted.id}&scope=bot&guild_id=653083797763522580'
+            embed.add_field(
+                name=f'**{i+1}. {submitted.id}**', 
+                value=f'{datetime.fromtimestamp(submitted.date)}\n[초대 링크]({url})', 
+                inline=False
+            )
 
         embed = discord.Embed(title=':rocket: ToDo List', color=discord.Color.green(), description='_ _')
         
