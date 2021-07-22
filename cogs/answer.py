@@ -12,8 +12,8 @@ class Answer(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def todo(self, ctx, query=0):
-        if query < 0:
+    async def todo(self, ctx, query: int):
+        if query <= 0:
             return await ctx.send('올바른 값을 입력해주세요.')
 
         def add_submitted(i, submitted):
@@ -21,7 +21,7 @@ class Answer(commands.Cog):
 
         embed = discord.Embed(title=':rocket: ToDo List', color=discord.Color.green(), description='_ _')
         
-        if not query: # query가 입력 받지 않았거나 0일 경우 모두
+        if query is None: # query가 입력 받지 않았을 경우
             for i, submitted in enumerate(submits):
                 add_submitted(i, submitted)
         
@@ -38,7 +38,7 @@ class Answer(commands.Cog):
         await ctx.send(embed=embed)
 
     @commands.command()
-    async def approve(self, ctx, query=0):
+    async def approve(self, ctx, query: int):
         for submitted in submits:
             if submitted.id == query:
                 approved_submits.append(submits.pop(submits.index(submitted)))
@@ -47,7 +47,7 @@ class Answer(commands.Cog):
         await ctx.send(f'**봇 {query}**를 찾을 수 없습니다.')
 
     @commands.command()
-    async def deny(self, ctx, query=0):
+    async def deny(self, ctx, query: int):
         for submitted in submits:
             if submitted.id == query:
                 submits.remove(submitted)
