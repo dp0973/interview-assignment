@@ -31,7 +31,7 @@ class Answer(commands.Cog):
                     add_submitted(i, submitted)
                     break
                 if i == len(submits)-1: # query가 일치하는 id가 없을 경우 인덱스로 인식
-                    if query > len(submits):
+                    if query > i+1:
                         return await ctx.send('해당 쿼리를 인덱스 또는 ID로 가진 봇을 찾을 수 없습니다.')
                     add_submitted(query-1, submits[query-1])
 
