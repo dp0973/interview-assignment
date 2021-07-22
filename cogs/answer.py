@@ -24,7 +24,10 @@ class Answer(commands.Cog):
                 inline=False
             )
 
-        embed = discord.Embed(title=':rocket: ToDo List', color=discord.Color.green(), description='_ _')
+        embed = discord.Embed(
+            title=':rocket: ToDo List', 
+            color=discord.Color.green()
+            )
         
         if query is None: # query가 입력 받지 않았을 경우
             for i, submitted in enumerate(submits):
